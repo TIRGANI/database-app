@@ -27,6 +27,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import adress.Ip;
 import beans.Star;
 
 public class AddEtudiant extends AppCompatActivity implements View.OnClickListener {
@@ -38,7 +39,8 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
     private RadioButton f;
     private Button add,listEtudiants;
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.43.139:8080/Projet01/ws/createEtudiant.php";
+
+    String insertUrl = "http://"+ Ip.ip+":8080/Projet01/ws/createEtudiant.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
                     params.put("prenom", prenom.getText().toString());
                     params.put("ville", ville.getSelectedItem().toString());
                     params.put("sexe", sexe);
+
                     return params;
                 }
             };
@@ -98,8 +101,10 @@ public class AddEtudiant extends AppCompatActivity implements View.OnClickListen
         }
         if(v==listEtudiants)
         {
+
             Intent intent = new Intent(AddEtudiant.this,MainActivity.class);
             AddEtudiant.this.startActivity(intent);
+
             this.finish();
         }
     }

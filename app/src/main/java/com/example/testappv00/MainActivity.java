@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import java.util.Collection;
 import java.util.List;
 
 import adapter.StarAdapter;
+import adress.Ip;
 import beans.Etudiant;
 import beans.Star;
 import service.StarService;
@@ -35,7 +37,8 @@ import service.StarService;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     RequestQueue requestQueue;
 
-    String insertUrllo = "http://192.168.43.139:8080/projet01/ws/loadEtudiant.php";
+
+    String insertUrllo = "http://"+Ip.ip+":8080/projet01/ws/loadEtudiant.php";
     private Button addbb;
     private RecyclerView recyclerView;
     private StarAdapter starAdapter = null;
@@ -51,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         addbb = (Button)findViewById(R.id.addbb);
-        Log.d("***********Event after liste : ", "list");
+        Log.d("***********Votre Ip add  : "+Ip.ip, "list");
+
 
         requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest request = new StringRequest(Request.Method.POST,

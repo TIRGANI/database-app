@@ -14,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -31,15 +30,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.testappv00.MainActivity;
 import com.example.testappv00.R;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import adress.Ip;
 import beans.Star;
 import service.StarService;
 
@@ -48,7 +44,10 @@ public class StarAdapter extends RecyclerView.Adapter<StarAdapter.StarViewHolder
     private List<Star> stars;
     private Context context;
     RequestQueue requestQueue;
-    String insertUrl = "http://192.168.43.139:8080/Projet01/ws/dropEtudiant.php";
+
+
+
+    String insertUrl = "http://"+Ip.ip+":8080/Projet01/ws/dropEtudiant.php";
 
     public StarAdapter(Context context, List<Star> stars) {
         this.stars = stars;
